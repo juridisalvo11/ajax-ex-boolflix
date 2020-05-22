@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Boolfix</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-left">
+                <h1>Boolflix</h1>
+            </div>
+            <div class="header-right">
+                <input class="search-film" type="text">
+                <button id="search">Search</button>
+            </div>
+        </header>
+        <main>
+
+        </main>
+        <script id="film-template" type="text/x-handlebars-template">
+          <div class="entry">
+            <h1>{{title}}</h1>
+            <div class="">{{original-title}}</div>
+            <div class="body">{{language}}</div>
+            <div class="body">{{score}}</div>
+          </div>
+        </script>
+        <script src="sheet.js" charset="utf-8"></script>
+    </body>
+</html>
