@@ -6,6 +6,7 @@
 
 body {
     margin: 0;
+    background-color: black;
 }
 
 header {
@@ -26,16 +27,43 @@ input, button {
     border-radius: 5px;
 }
 
-main {
-    height: 100vh;
-    background-color: black;
+.container {
+    width: 84%;
+    margin: auto;
 }
 
-ul {
+#current-research {
+    color: white;
+    display: none;
+}
+
+#current-research.active {
+    display: block;
+}
+
+.box-film {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.list {
     list-style-type: none;
-    margin : 0;
-    padding-top: 50px;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
+    border: 1px solid white;
+    width: 195px;
+    height: 215px;
+    padding: 10px;
+    margin: 15px;
+}
+
+.list li {
+    margin-bottom: 10px;
+}
+
+.flag-size {
+    width: 20px;
 }

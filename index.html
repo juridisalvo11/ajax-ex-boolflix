@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Boolfix</title>
         <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/3e39139afa.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     </head>
@@ -18,22 +19,32 @@
             </div>
         </header>
         <main>
-            <ul class="lista-film">
-                <li class="titolo"></li>
-                <li class="titolo-originale"></li>
-                <li class="lingua"></li>
-                <li class="voto-film"></li>
-            </ul>
+            <div class="container">
+                <h2 id="current-research">Risultati ricerca per :
+                    <span class="film-searched"></span>
+                </h2>
+                <div class="box-film">
+
+                </div>
+            </div>
         </main>
-        <!-- <script id="film-template" type="text/x-handlebars-template">
+        <script id="film-template" type="text/x-handlebars-template">
           <div class="entry">
-              <ul class="lista-film">
-                  <li>{{title}}</li>
-                  <li>{{original-title}}</li>
-                  <li>{{language}}</li>
-                  <li>{{score}}</li>
+              <ul class="list">
+                  <li>
+                      <span>Titolo : </span>
+                      {{title}}
+                  </li>
+                  <li>
+                      <span>Titolo Originale : </span>
+                      {{original-title}}
+                  </li>
+                  <li>
+                      {{{language}}}
+                  </li>
+                  <li>{{{score}}}</li>
               </ul>
-          </div> -->
+          </div>
         </script>
         <script src="sheet.js" charset="utf-8"></script>
     </body>
