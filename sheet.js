@@ -118,7 +118,7 @@ $(document).ready(function(){
              'language' : flag_language(dati_film.original_language),
              'score' : stelle(arrotonda_voto(dati_film.vote_average)),
              'categoria_elemento' : categoria,
-             //'copertina' : inserisci_locandina(dati_film.poster_path),
+             'copertina' : inserisci_locandina(dati_film.poster_path),
          }
 
          var context = template(lista_film);
@@ -160,11 +160,14 @@ $(document).ready(function(){
          return star;
      }
 
-     // function inserisci_locandina(locandina) {
-     //        var lista_locandine = locandina[i]
-     //
-     //        for (var i = 0; i < lista_locandine.length; i++) {
-     //            return '<img src="' + url_copertina + locandina + '.png">'
-     //        }
-     // }
+     function inserisci_locandina(locandina) {
+        var not_found = '<img class="not-found" src="img/not_found.jpg">'
+
+        if (locandina) {
+            return '<img class="img-found" src="' + url_copertina + locandina + '">'
+        }
+
+        return not_found
+
+     }
 })

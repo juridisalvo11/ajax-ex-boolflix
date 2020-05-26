@@ -47,14 +47,22 @@ input, button {
     flex-wrap: wrap;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    border: 1px solid white;
+    height: 280px;
+    width: 370px;
+    margin-right: 7px;
+    margin-top: 10px;
+}
+
 .list {
     list-style-type: none;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: 1px solid white;
-    width: 195px;
     height: 215px;
     padding: 10px;
     margin: 15px;
@@ -70,4 +78,13 @@ input, button {
 
 .stars {
     color: yellow;
+}
+
+.img-found {
+    height: 100%;
+}
+
+.not-found {
+    width: 185px;
+    height: 100%;
 }
