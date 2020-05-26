@@ -2,7 +2,7 @@ $(document).ready(function(){
     //Variabili standard
     var api_key = '5ccd22807b780aebefb68ca254c6d38a';
     var api_url = 'https://api.themoviedb.org/3/';
-    var url_copertina = 'https://image.tmdb.org/t/p/w185'
+    var url_copertina = 'https://image.tmdb.org/t/p/w342'
 
     //Utilizzo Handlebars per il template
     var source   = document.getElementById("film-template").innerHTML;
@@ -119,6 +119,7 @@ $(document).ready(function(){
              'score' : stelle(arrotonda_voto(dati_film.vote_average)),
              'categoria_elemento' : categoria,
              'copertina' : inserisci_locandina(dati_film.poster_path),
+             'trama' : dati_film.overview,
          }
 
          var context = template(lista_film);

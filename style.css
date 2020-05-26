@@ -20,6 +20,23 @@ header {
 
 .header-left {
     color: red;
+    display: flex;
+    align-items: center;
+}
+
+.menu-options {
+    display: flex;
+    list-style-type: none;
+    margin-left: 10px;
+}
+
+.menu-options li {
+    margin-left: 20px;
+}
+
+.menu-options a {
+    text-decoration: none;
+    color: white;
 }
 
 input, button {
@@ -28,7 +45,7 @@ input, button {
 }
 
 .container {
-    width: 84%;
+    width: 80%;
     margin: auto;
 }
 
@@ -52,7 +69,6 @@ input, button {
     flex-direction: row-reverse;
     border: 1px solid white;
     height: 280px;
-    width: 370px;
     margin-right: 7px;
     margin-top: 10px;
 }
@@ -63,9 +79,12 @@ input, button {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 215px;
+    height: 240px;
+    width: 312px;
     padding: 10px;
     margin: 15px;
+    overflow: hidden;
+    display: none;
 }
 
 .list li {
@@ -80,11 +99,19 @@ input, button {
     color: yellow;
 }
 
-.img-found {
+.not-found {
+    width: 342px;
     height: 100%;
 }
 
-.not-found {
-    width: 185px;
-    height: 100%;
+.poster {
+    display: flex;
+}
+
+.wrapper:hover .list {
+    display:block;
+}
+
+.wrapper:hover .poster {
+    display: none;
 }

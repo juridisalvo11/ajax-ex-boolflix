@@ -11,10 +11,31 @@
     <body>
         <header>
             <div class="header-left">
-                <img src="https://fontmeme.com/permalink/200522/e0edb933aaaea7b955cfb79782dee3e8.png" alt="">
+                <div class="">
+                    <img src="https://fontmeme.com/permalink/200522/e0edb933aaaea7b955cfb79782dee3e8.png" alt="">
+                </div>
+                <div class="menu">
+                    <ul class="menu-options">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Film</a>
+                        </li>
+                        <li>
+                            <a href="#">Serie Tv</a>
+                        </li>
+                        <li>
+                            <a href="#">Nuovi Arrivi</a>
+                        </li>
+                        <li>
+                            <a href="#">La mia lista</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="header-right">
-                <input class="search-film" type="text">
+                <input class="search-film" type="text" placeholder="Cerca film, serie TV">
                 <button id="search">Search</button>
             </div>
         </header>
@@ -44,8 +65,9 @@
                   </li>
                   <li class="stars">{{{score}}}</li>
                   <li>{{{categoria_elemento}}}</li>
+                  <li>{{trama}}</li>
               </ul>
-              <div class="">{{{copertina}}}</div>
+              <div class="poster">{{{copertina}}}</div>
 
           </div>
         </script>
