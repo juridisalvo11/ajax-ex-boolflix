@@ -67,3 +67,7 @@ input, button {
 .flag-size {
     width: 20px;
 }
+
+.stars {
+    color: yellow;
+}

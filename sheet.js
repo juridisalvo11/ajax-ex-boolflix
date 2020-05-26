@@ -1,4 +1,10 @@
 $(document).ready(function(){
+    //Variabili standard
+    var api_key = '5ccd22807b780aebefb68ca254c6d38a';
+    var api_url = 'https://api.themoviedb.org/3/';
+    var url_copertina = 'https://image.tmdb.org/t/p/w185'
+
+    //Utilizzo Handlebars per il template
     var source   = document.getElementById("film-template").innerHTML;
     var template = Handlebars.compile(source);
     //Intercetto il click sul button e attivo il tasto Invio per far partire la richiesta ajax richiamandone la funzione
@@ -25,23 +31,22 @@ $(document).ready(function(){
 
             //Invio una richiesta ajax per recuperare i dati dei film
             $.ajax({
-                url : 'https://api.themoviedb.org/3/search/movie',
+                url : api_url + 'search/movie',
                 method : 'GET',
                 //imposto la mia api_key personale e la query per la ricerca
                 data : {
-                    api_key : '5ccd22807b780aebefb68ca254c6d38a',
+                    api_key : api_key,
                     query : testo_utente,
                     language : 'it',
                 },
-                success : function(request_film) {
-
+                success : function(request) {
                     //Imposto nel titolo le informazioni della ricerca corrente
                     $('.film-searched').text(testo_utente)
                     //Imposto classe active con display block per mostrare il titolo
                     $('#current-research').addClass('active');
 
                     //Chiamo la funziona cerca_film per mostrare i risukltati della ricerca
-                    cerca_film(request_film.results)
+                    search(request.results, 'Film')
                 },
                 error : function(){
                     alert('si è verificato un errore');
@@ -51,17 +56,17 @@ $(document).ready(function(){
 
             //Invio una richiesta ajax per recuperare i dati delle serie tv
             $.ajax({
-                url : 'https://api.themoviedb.org/3/search/tv',
+                url : api_url + 'search/tv',
                 method : 'GET',
                 //imposto la mia api_key personale e la query per la ricerca
                 data : {
-                    api_key : '5ccd22807b780aebefb68ca254c6d38a',
+                    api_key : api_key,
                     query : testo_utente,
                     language : 'it',
                 },
-                success : function(request_series) {
+                success : function(request) {
                     //Chiamo la funziona cerca_film per mostrare i risukltati della ricerca
-                    cerca_film(request_series.results)
+                    search(request.results, 'Serie TV')
                 },
                 error : function(){
                     alert('si è verificato un errore');
@@ -85,34 +90,35 @@ $(document).ready(function(){
 
 //FUNZIONE PER CERCARE I FILM
 
-     function cerca_film(film) {
+     function search(film, categoria) {
+         var results = film.results;
          //Imposto un ciclo for per andare a ricavare le chiavi degli oggetti contenuti nell'array dei film
          for (var i = 0; i < film.length; i++) {
              //Recupero i singoli film inserendoli in una variabile
              var film_corrente = film[i];
              //console.log(film_corrente);
              //Richiamo la funzione inserisci_dati per stampare i dati in pagina
-             inserisci_dati(film_corrente)
+             inserisci_dati(film_corrente, categoria)
          }
      }
 //FUNZIONE PER INSERIRE I DATI
 
-     function inserisci_dati(dati_film) {
-        //Imposto variabile per arrotondare trasformare il voto in interi da 1 a 5
-        var votes = Math.round(dati_film.vote_average / 2);
-        //Creo due variabili: una per la l'icona stella piena e una per l'icona stella vuota entrambe = ad una stringa vuota
-        var star = '';
-        var empty_star = '';
-        //Creo un ciclo for per andare a riempire le variabili con le icone
-        for (var i = 0; i < votes; i++) {
-            star += '<i class="fas fa-star"></i>';
+     function inserisci_dati(dati_film, categoria) {
+         if (categoria == 'Film') {
+            var tipe_title = dati_film.title;
+            var tipe_originaltitle = dati_film.original_title;
+        } else {
+            var tipe_title = dati_film.name;
+            var tipe_originaltitle = dati_film.original_name;
         }
         //Vado a recuperare i dati da stampare in pagina
          var lista_film = {
-             'title' : dati_film.title || dati_film.name,
-             'original-title' : dati_film.original_title || dati_film.original_name,
+             'title' : tipe_title,
+             'original-title' : tipe_originaltitle,
              'language' : flag_language(dati_film.original_language),
-             'score' : star,
+             'score' : stelle(arrotonda_voto(dati_film.vote_average)),
+             'categoria_elemento' : categoria,
+             //'copertina' : inserisci_locandina(dati_film.poster_path),
          }
 
          var context = template(lista_film);
@@ -129,11 +135,36 @@ $(document).ready(function(){
          //verifico le condizioni :
 
          if (languages.includes(flag)) {
-             //se bandiere corrispondente alla lingua è inclusa tra le lingue la inserisco in pagina
+             //se la bandiera corrispondente alla lingua è inclusa tra le lingue la inserisco in pagina
             return '<img class="flag-size" src="img/flag_' + flag + '.png">'
         } else {
             //altrimenti inserisco in pagina la sigla della lingua
             return flag
         }
      }
+
+     function arrotonda_voto(voto) {
+        vote = voto / 2;
+        return Math.round(vote);
+     }
+
+     function stelle(voti_stelle) {
+         //Creo due variabili: una per l'icona stella piena e una per l'icona stella vuota entrambe = ad una stringa vuota
+         var star = '';
+         //Creo un ciclo for per andare a riempire le variabili con le icone
+         for (var i = 1; i <= 5 ; i++) {
+            if(i <= voti_stelle) {
+                star += '<i class="fas fa-star"></i>';
+            }
+         }
+         return star;
+     }
+
+     // function inserisci_locandina(locandina) {
+     //        var lista_locandine = locandina[i]
+     //
+     //        for (var i = 0; i < lista_locandine.length; i++) {
+     //            return '<img src="' + url_copertina + locandina + '.png">'
+     //        }
+     // }
 })
