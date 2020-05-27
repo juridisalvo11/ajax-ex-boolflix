@@ -45,7 +45,7 @@ input, button {
 }
 
 .container {
-    width: 80%;
+    width: 85%;
     margin: auto;
 }
 
@@ -65,53 +65,44 @@ input, button {
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: row-reverse;
-    border: 1px solid white;
-    height: 280px;
-    margin-right: 7px;
-    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .list {
-    list-style-type: none;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 240px;
-    width: 312px;
-    padding: 10px;
-    margin: 15px;
+    width: 217px;
+    height: 314px;
     overflow: hidden;
-    display: none;
+    background-color: white;
 }
 
 .list li {
-    margin-bottom: 10px;
+    list-style-type: none;
+    margin: 15px;
+    display:none;
+}
+
+#poster {
+    display: block;
+    width: 100%;
 }
 
 .flag-size {
     width: 20px;
 }
 
-.stars {
+#stars {
     color: yellow;
 }
 
 .not-found {
-    width: 342px;
-    height: 100%;
+    width: 185px;
+    height: 278px;
 }
 
-.poster {
-    display: flex;
-}
-
-.wrapper:hover .list {
+.wrapper:hover .list li {
     display:block;
 }
 
-.wrapper:hover .poster {
+.wrapper:hover #poster {
     display: none;
 }

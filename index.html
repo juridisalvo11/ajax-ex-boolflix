@@ -52,6 +52,7 @@
         <script id="film-template" type="text/x-handlebars-template">
           <div class="wrapper">
               <ul class="list">
+                  <li id="poster">{{{copertina}}}</li>
                   <li>
                       <span>Titolo : </span>
                       {{title}}
@@ -63,11 +64,10 @@
                   <li>
                       {{{language}}}
                   </li>
-                  <li class="stars">{{{score}}}</li>
+                  <li id="stars">{{{score}}}</li>
                   <li>{{{categoria_elemento}}}</li>
                   <li>{{trama}}</li>
               </ul>
-              <div class="poster">{{{copertina}}}</div>
 
           </div>
         </script>

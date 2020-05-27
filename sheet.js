@@ -2,7 +2,7 @@ $(document).ready(function(){
     //Variabili standard
     var api_key = '5ccd22807b780aebefb68ca254c6d38a';
     var api_url = 'https://api.themoviedb.org/3/';
-    var url_copertina = 'https://image.tmdb.org/t/p/w342'
+    var url_copertina = 'https://image.tmdb.org/t/p/w185'
 
     //Utilizzo Handlebars per il template
     var source   = document.getElementById("film-template").innerHTML;
@@ -65,6 +65,9 @@ $(document).ready(function(){
                     language : 'it',
                 },
                 success : function(request) {
+                    $('.film-searched').text(testo_utente);
+
+                    $('#current-research').addClass('active');
                     //Chiamo la funziona cerca_film per mostrare i risukltati della ricerca
                     search(request.results, 'Serie TV')
                 },
