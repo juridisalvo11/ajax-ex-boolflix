@@ -80,6 +80,26 @@ $(document).ready(function(){
             alert ('Digita 2 o più caratteri')
         }
 
+        // $.ajax({
+            //     url : 'https://api.themoviedb.org/3/genre/movie/list?api_key=5ccd22807b780aebefb68ca254c6d38a',
+            //     method : 'GET',
+            //     //imposto la mia api_key personale e la query per la ricerca
+            //     data : {
+            //         api_key : api_key,
+            //         query : testo_utente,
+            //         language : 'it',
+            //     },
+            //     success : function(request) {
+            //         console.log(request.genres);
+            //         //Chiamo la funziona cerca_film per mostrare i risukltati della ricerca
+            //         search(request.genres, 'Genre')
+            //     },
+            //     error : function(){
+            //         alert('si è verificato un errore');
+            //     }
+            //
+            // })
+
      }
 
 //FUNZIONE PER SVUOTARE I CAMPI DI INPUT E FILM DOPO LA RICERCA
@@ -123,6 +143,7 @@ $(document).ready(function(){
              'categoria_elemento' : categoria,
              'copertina' : inserisci_locandina(dati_film.poster_path),
              'trama' : dati_film.overview,
+             //'genere' : dati_film.name,
          }
 
          var context = template(lista_film);
