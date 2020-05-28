@@ -142,8 +142,8 @@ $(document).ready(function(){
              'score' : stelle(arrotonda_voto(dati_film.vote_average)),
              'categoria_elemento' : categoria,
              'copertina' : inserisci_locandina(dati_film.poster_path),
-             'trama' : dati_film.overview,
-             //'genere' : dati_film.name,
+             'trama' : overview(dati_film.overview),
+
          }
 
          var context = template(lista_film);
@@ -194,5 +194,13 @@ $(document).ready(function(){
 
         return not_found
 
+     }
+
+     function overview(anteprima) {
+         var trama_contenuto = '';
+         if (anteprima.length > 80) {
+             trama_contenuto = anteprima.substr(0, 75) + '...';
+         }
+         return trama_contenuto;
      }
 })

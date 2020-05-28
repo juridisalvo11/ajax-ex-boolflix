@@ -51,30 +51,35 @@
         </main>
         <script id="film-template" type="text/x-handlebars-template">
           <div class="wrapper">
-              <ul class="list">
-                  <li id="poster">{{{copertina}}}</li>
-                  <li>
-                      <span>Titolo : </span>
-                      {{title}}
-                  </li>
-                  <li>
-                      <span>Titolo Originale : </span>
-                      {{original-title}}
-                  </li>
-                  <li>
-                      {{{language}}}
-                  </li>
-                  <li id="stars">{{{score}}}</li>
-                  <li>
-                      <span>Categoria : </span>
-                      {{{categoria_elemento}}}
-                  </li>
-                  <li class="overview">
-                      <span>Trama : </span>
-                      {{trama}}
-                  </li>
-              </ul>
-
+              <div class="box-card">
+                  <div class="front-card">
+                      {{{copertina}}}
+                  </div>
+                  <div class="back-card">
+                      <ul class="list">
+                          <li>
+                              <span>Titolo : </span>
+                              {{title}}
+                          </li>
+                          <li>
+                              <span>Titolo Originale : </span>
+                              {{original-title}}
+                          </li>
+                          <li>
+                              {{{language}}}
+                          </li>
+                          <li class="stars">{{{score}}}</li>
+                          <li>
+                              <span>Categoria : </span>
+                              {{{categoria_elemento}}}
+                          </li>
+                          <li class="overview">
+                              <span>Trama : </span>
+                              {{{trama}}}
+                          </li>
+                      </ul>
+                  </div>
+             </div>
           </div>
         </script>
         <script src="sheet.js" charset="utf-8"></script>
